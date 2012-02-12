@@ -1,0 +1,48 @@
+<html>
+  <head>
+   <script type="application/javascript">
+ function drawBowtie(ctx, fillStyle) {
+   ctx.fillStyle = "rgba(200,0,0,0.3)";
+   ctx.fillRect(-30, -30, 30, 30);
+   ctx.fillStyle = "rgba(0,200,0,0.3)";
+     ctx.fillRect(-30, 0, 30, 30);
+   ctx.fillStyle = "rgba(0,0,200,0.3)";
+ctx.fillRect(0, -30, 30, 30);
+   ctx.fillStyle = "rgba(150,150,0,0.3)";
+ctx.fillRect(0, 0, 30, 30);
+ }
+   
+ var x = 0, y = 0, z = 0, down = 0;
+ function update(e) {
+    var canvas3 = document.getElementById("canvas2");
+    var ctx = canvas3.getContext("2d");
+//ctx.clearRect(0, 0, 200, 200);
+ }
+
+  function drawmouse(e) {
+    var canvas3 = document.getElementById("canvas2");
+    var ctx = canvas3.getContext("2d");
+    ctx.save();
+    ctx.translate(e.pageX, e.pageY);
+    if (down == 1) drawBowtie(ctx, "green");
+    ctx.restore();
+ }
+ 
+ function mousedown(e) {
+down = 1;
+ }
+  function mouseup(e) {
+down = 0;
+ }
+ 
+ setInterval(update, 40);
+ document.onmousemove = drawmouse;
+ document.onmousedown = mousedown;
+ document.onmouseup = mouseup;
+
+    </script>
+  </head>
+  <body onload="draw()">
+    <canvas id="canvas2" width="300" height="300"></canvas>
+  </body>
+ </html>
